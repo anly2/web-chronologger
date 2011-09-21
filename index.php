@@ -1,3 +1,6 @@
+<?php
+   $f = isset($_REQUEST['file'])? "file=".$_REQUEST['file'] : "";
+?>
 <html>
 <head>
    <title>Skype Chronologer</title>
@@ -33,11 +36,12 @@
 
 </head>
 <body>
+<br />
 
-<div style="text-align:center">
+<div align="center">
 
    <div class="textarea" style="width:600px; height:300px;">
-      <script type="text/javascript" src="chat.php?"></script>
+      <script type="text/javascript" src="chat.php?<?php echo $f; ?>"></script>
       <script type="text/javascript">
          load(0);
       </script>

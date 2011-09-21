@@ -5,7 +5,7 @@ if(!isset($_SERVER['HTTP_REFERER']) || parse_url($_SERVER['HTTP_REFERER'], PHP_U
 // Timely messages are those which are in a reasonable interval of the previous
 // Timely messages help read "disturbed" chat, where one participant might interrupt another
 var SPEED    = 250; // Miliseconds per Second in Real Time  (<1000 result in faster than real speed and >1000 result in slower than real speed)
-var TIMELY   = 2;   // The number of seconds after which a message is considered timely
+var TIMELY   = 4;   // The number of seconds after which a message is considered timely
 var PATIENCE = 15;  // The number of seconds to wait for the next message // Delay Cap
 //Do not modify!
 var chats    = new Array();
@@ -31,7 +31,7 @@ function chat(timestamp, node){
    this.shouldCheckTimely      = ( should && should.indexOf("timely") != -1 );
 
    this.speed = this.contentNode.getAttribute("speed");
-   if(!this.speed) this.speed = 250;
+   if(!this.speed) this.speed = SPEED;
 
    this.sendersShown = false
    this.loading      = false;
@@ -72,7 +72,7 @@ function message(cid){
    //If there is a next message AND if that next is from a different sender AND if the next message is not timely, don't have a line break
    if( _chat.shouldCheckTimely)
    if( _chat.index-(-1)<_chat.messages.length)
-   if( _chat.messages[_chat.index-(-1)].sender != _chat.messages[_chat.index].sender)
+   if( _chat.messages[_chat.index-(-1)].sender > _chat.messages[_chat.index].sender)
    if((_chat.messages[_chat.index-(-1)].time - _chat.messages[_chat.index].time) < TIMELY)
          elem.style.float = 'left';
 
