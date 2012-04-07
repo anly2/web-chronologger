@@ -1,0 +1,22 @@
+### Chronologer ###
+#This is a version file
+#  used for dynamically updating links so that people know there's something new
+#  it also contains the changelogs for a given project
+
+
+version 0
+    - Simple output of Skype messages in columns instead of the usual chat style
+
+version 1
+    - With javascript it's now much more user friendly
+    - Minor support for message floating/roaming
+
+version 2
+    - Messages are now independant objects and not in a table
+        + (default) should="*sender*" displays the Sender Headers in the end as well (top sender headers are always generated)
+    - Messages are generated in intervals coresponding to the time in the history log
+        + SPEED can be changed (<~~~ speed="ms">) for faster/real-time/slower pour of messages.
+            > Default speed is 250, faster is <1000, real-time is 1000 and slower is >1000
+        + (default) If messages exceed the parentNode size and it's scrollable, should="*scroll*" enables auto scrolling to bottom
+    - Message styling and floating is supported (though might be some bugs with the floating)
+        + (default) should="*timely*" enables floating messages
